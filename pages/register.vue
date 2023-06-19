@@ -37,9 +37,35 @@ export default {
     },
     methods: {
         async register() {
+
+            if (!this.name) {
+                this.error = "Please enter a name."
+                return false;
+            }
+
+            if (!this.email) {
+                this.error = "Please enter an email.";
+                return false;
+            }
+
+            if (!this.password) {
+                this.error = 'Missing Password'
+            }
+
+            if (this.password && this.password.length < 6) {
+                this.error = "Password should be at least 6 characters long.";
+                return false;
+            }
+
             if (this.password !== this.confirmPassword) {
                 this.error = 'Password and confirm password do not match';
                 return;
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(this.email)) {
+                this.error = "Please enter a valid email.";
+                return false;
             }
 
             this.loading = true;

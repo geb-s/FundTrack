@@ -33,8 +33,18 @@ export default {
     },
     methods: {
         async login() {
-            this.loading = true;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             this.error = '';
+            if (
+                !this.password
+                || this.password.length < 6
+                || !this.email
+                || !emailRegex.test(this.email)
+            ) {
+                this.error = 'Invalid Credentials.';
+                return;
+            }
+            this.loading = true;
 
             try {
                 await AuthService.login(this.email, this.password, this.$apollo, this.$router);
