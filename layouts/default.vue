@@ -1,5 +1,6 @@
 <template>
   <v-app dark>
+    <Snackbar />
     <v-app-bar :clipped-left="clipped" fixed app>
       <nuxt-link :to="'/'" class="nav-link">
         <v-toolbar-title class="ml-2">
@@ -53,26 +54,21 @@
       <span>&copy; {{ new Date().getFullYear() }} {{ projTitle }}</span>
     </v-footer>
 
-    <v-dialog v-model="showLogoutConfirmation" persistent max-width="500px">
-      <v-card>
-        <v-card-title class="headline">Logout Confirmation</v-card-title>
-        <v-card-text>
-          <span>Are you sure you want to logout?</span>
-        </v-card-text>
-        <v-card-actions>
-          <v-btn color="primary" text @click="showLogoutConfirmation = false">Cancel</v-btn>
-          <v-btn color="error" text @click="logout">Logout</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
+    <ConfirmationDialog :showDialog="showLogoutConfirmation" @cancel="showLogoutConfirmation = false"
+      @confirm="logout" title="Logout Confirmation" message="Are you sure you want to logout?" />
   </v-app>
 </template>
 
 <script>
-import { AuthService } from '~/services/AuthService';
+import Snackbar from '@/components/Snackbar.vue';
+import ConfirmationDialog from '~/components/ConfirmationDialog.vue';
 
 export default {
   name: 'DefaultLayout',
+  components: {
+    Snackbar,
+    ConfirmationDialog
+  },
   data() {
     return {
       clipped: false,
@@ -83,13 +79,13 @@ export default {
       showLogoutConfirmation: false,
       desktopMenuItems: [
         { title: 'Dashboard', icon: 'mdi-view-dashboard', route: '/dashboard' },
-        { title: 'Transactions', icon: 'mdi-currency-usd', route: '/transactions' },
-        { title: 'Profile', icon: 'mdi-account', route: '/profile' }
+        { title: 'Transactions', icon: 'mdi-cash-clock', route: '/transactions' },
+        { title: 'Settings', icon: 'mdi-account-cog', route: '/settings' }
       ],
       drawerItems: [
         { title: 'Dashboard', icon: 'mdi-view-dashboard', route: '/dashboard' },
-        { title: 'Transactions', icon: 'mdi-currency-usd', route: '/transactions' },
-        { title: 'Profile', icon: 'mdi-account', route: '/profile' }
+        { title: 'Transactions', icon: 'mdi-cash-clock', route: '/transactions' },
+        { title: 'Settings', icon: 'mdi-account-cog', route: '/settings' }
       ]
     }
   },
@@ -112,8 +108,8 @@ export default {
       // Handle menu item click
     },
     logout() {
-      this.showLogoutConfirmation= false,
-      this.$store.dispatch('auth/removeToken');
+      this.showLogoutConfirmation = false,
+        this.$store.dispatch('auth/removeToken');
       this.$router.push('/');
     }
   },
