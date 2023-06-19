@@ -1,68 +1,35 @@
-# frontend
+# FundTrack
 
-## Build Setup
+FundTrack is a personal finance management application that allows users to track their income, expenses, and overall financial health. It provides a user-friendly interface for managing transactions and tracking spending habits.
 
-```bash
-# install dependencies
-$ npm install
+## Technologies and Frameworks
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+FundTrack is built using the following technologies and frameworks:
 
-# build for production and launch server
-$ npm run build
-$ npm run start
+- Nuxt.js: A Vue.js framework for building server-side rendered and static websites.
+- Vuetify: A Material Design component framework for Vue.js.
+- Vue Chart.js: A Vue wrapper for Chart.js, a powerful charting library.
 
-# generate static project
-$ npm run generate
-```
+## Project Structure
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+The project follows a basic structure for a Nuxt.js application, which includes the following folders and files:
 
-## Special Directories
+- **layouts**: Contains the layout files used to structure the different pages of the application.
+- **middleware**: Contains middleware functions that run before rendering pages or groups of pages.
+- **pages**: Contains the application's pages and routes.
+- **static**: Contains static files that will be served directly without any processing (e.g., favicon.ico).
+- **store**: Includes Vuex store files for managing the application's state.
+- **nuxt.config.js**: Configuration file for Nuxt.js that allows you to customize various aspects of the application, such as modules, plugins, build configuration, etc.
+- **package.json**: Lists the project's dependencies, scripts, and other metadata.
 
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
+- **middleware/auth.js**: Handles authentication and ensures that only authenticated users can access certain routes.
 
-### `assets`
+## Installation
 
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
+To set up the application locally, follow these steps:
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
-
-### `components`
-
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
-
-### `layouts`
-
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
-
-### `pages`
-
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
-
-### `plugins`
-
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
-
-### `static`
-
-This directory contains your static files. Each file inside this directory is mapped to `/`.
-
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
-
-### `store`
-
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+1. Clone the repository: `git clone <repository-url>`
+2. Navigate to the project directory: `cd personal-finance-management-system-frontend`
+3. Install dependencies: `npm install`
+4. Start the development server: `npm run dev`
+5. Open your browser and visit: `http://localhost:3000`
